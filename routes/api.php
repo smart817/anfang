@@ -12,4 +12,5 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\api'], function ($api)
         return 'sdfsdfsdfdddd';
     });
     $api->get('content', 'AnfangContengController@index');
+    $api->post('store', 'TimuController@store');
 });
