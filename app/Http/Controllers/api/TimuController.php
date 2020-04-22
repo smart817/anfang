@@ -38,14 +38,9 @@ class TimuController extends Controller
         $qsown->updated_at = time();
         $qsown->save();*/
 
-        $timu = new timu;
-        $timu['1_11'] = $data['1_11'];
-        $timu['1_12'] = $data['1_12'];
-        $timu['1_13'] = $data['1_13'];
-        $timu['1_2'] = "金融机构简称";
-        $timu['1_3'] = "网点名称";
-        $timu['2'] = 0;
-        $timu['3'] = 1;
+        $timu = new Timu;
+        $timu = $data;
+
         $timu->save();
         //$data = $request->all();
     }

@@ -73,7 +73,9 @@ class TimuController extends AdminController
         $show = new Show(timu::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('1_1', __('1 1'));
+        $show->field('1_11', __('1 11'));
+        $show->field('1_12', __('1 12'));
+        $show->field('1_13', __('1 13'));
         $show->field('1_2', __('1 2'));
         $show->field('1_3', __('1 3'));
         $show->field('2', __('2'));
@@ -115,7 +117,9 @@ class TimuController extends AdminController
     {
         $form = new Form(new timu());
 
-        $form->text('1_1', __('1 1'));
+        $form->field('1_11', __('1 11'));
+        $form->field('1_12', __('1 12'));
+        $form->field('1_13', __('1 13'));
         $form->text('1_2', __('1 2'));
         $form->text('1_3', __('1 3'));
         $form->text('2', __('2'));
