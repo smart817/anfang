@@ -44,8 +44,8 @@ class TimuController extends Controller
             $timu[$key] = $value;
         }
 
-        $timu->save();
-        return "保存成功";
+        // $timu->save();
+        return $timu;//"保存成功";
         //$data = $request->all();
     }
     public function storeQiniu(Request $request)
