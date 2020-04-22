@@ -13,4 +13,5 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\api'], function ($api)
     });
     $api->get('content', 'AnfangContengController@index');
     $api->post('store', 'TimuController@store');
+    $api->post('tijiao', 'TimuController@tijiao');
 });

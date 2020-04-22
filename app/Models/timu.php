@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class timu extends Model
+class Timu extends Model
 {
     //
     protected $table = 'anfang_timu';

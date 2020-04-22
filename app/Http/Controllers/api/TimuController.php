@@ -8,6 +8,7 @@ use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
 use Image;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Timu;
 
 class TimuController extends Controller
 {
@@ -18,6 +19,36 @@ class TimuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function tijiao(Request $request)
+    {
+        $data = $request->all();
+        /*
+        $qsown = new Question;
+        $qsown->wx_openid = $openid;
+        $qsown->question = $question;
+     	$qsown->a = $a;
+      	$qsown->b = $b;
+     	$qsown->c = $c;
+        $qsown->d = $d;
+        $qsown->answer = $answer;
+        $user =User::where('wx_openid',$openid)->first();
+        $qsown->user_name = $user->name;
+        $qsown->status = 0;  //状态：0等待审核，1审核通过，2审核未通过，3删除
+        $qsown->created_at = time();
+        $qsown->updated_at = time();
+        $qsown->save();*/
+
+        $timu = new timu;
+        $timu['1_11'] = $data['1_11'];
+        $timu['1_12'] = $data['1_12'];
+        $timu['1_13'] = $data['1_13'];
+        $timu['1_2'] = "金融机构简称";
+        $timu['1_3'] = "网点名称";
+        $timu['2'] = 0;
+        $timu['3'] = 1;
+        $timu->save();
+        //$data = $request->all();
+    }
     public function storeQiniu(Request $request)
     {
         //
@@ -73,6 +104,7 @@ class TimuController extends Controller
     {
         if ($request->isMethod('POST')) { //判断文件是否是 POST的方式上传
             $tmp = $request->file('file');
+            //$img = Image::make($tmp);
             $path = '/image'; //public下的article
             if ($tmp->isValid()) { //判断文件上传是否有效
                 $FileType = $tmp->getClientOriginalExtension(); //获取文件后缀
@@ -93,7 +125,6 @@ class TimuController extends Controller
                     $font->valign('left');
                 });
 
-
                 $img->save(public_path($path . '/' . $FileName));
 
                 /* 上面的逻辑可以通过链式表达式搞定 */
@@ -103,7 +134,7 @@ class TimuController extends Controller
                 //     ->save('./image/new_abc.jpg');
                 return $data = [
                     'status' => 0,
-                    'path' => $path . '/' . $FileName //文件路径
+                    'path' => "http://".$_SERVER["HTTP_HOST"].$path . '/' . $FileName //文件路径
                 ];
             }
         }
