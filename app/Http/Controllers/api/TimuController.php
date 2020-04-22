@@ -9,6 +9,7 @@ use Qiniu\Storage\UploadManager;
 use Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Timu;
+use Illuminate\Support\Str;
 
 class TimuController extends Controller
 {
@@ -98,12 +99,24 @@ class TimuController extends Controller
             return $fileVo;
         }
     }
-
     public function store(Request $request)
     {
+        $image = $request->input('file'); // image base64 encoded
+        preg_match("/data:image\/(.*?);/", $image, $image_extension); // extract the image extension
+        $image = preg_replace('/data:image\/(.*?);base64,/', '', $image); // remove the type part
+        $image = str_replace(' ', '+', $image);
+        $imageName = 'image_' . time() . '.' . $image_extension[1]; //generating unique file name;
+        Storage::disk('image')->put($imageName, base64_decode($image));
+
+        return  "http://".$_SERVER["HTTP_HOST"].'/image/'.$imageName;
+    }
+    public function store22(Request $request)
+    {
         if ($request->isMethod('POST')) { //判断文件是否是 POST的方式上传
-            $tmp = $request->file('file');
+            //$tmp = $request->file('file');
+            $tmp = $request->input('file');
             //$img = Image::make($tmp);
+            $tmp ==urldecode($base64_img);
             $path = '/image'; //public下的article
             if ($tmp->isValid()) { //判断文件上传是否有效
                 $FileType = $tmp->getClientOriginalExtension(); //获取文件后缀
