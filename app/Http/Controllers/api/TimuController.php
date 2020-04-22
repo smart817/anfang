@@ -21,6 +21,7 @@ class TimuController extends Controller
      */
     public function tijiao(Request $request)
     {
+        //$timu = new Timu;
         $data = $request->all();
         /*
         $qsown = new Question;
@@ -39,9 +40,12 @@ class TimuController extends Controller
         $qsown->save();*/
 
         $timu = new Timu;
-        $timu = $data;
+        foreach ($data as $key => $value) {
+            $timu[$key] = $value;
+        }
 
         $timu->save();
+        return "保存成功";
         //$data = $request->all();
     }
     public function storeQiniu(Request $request)
