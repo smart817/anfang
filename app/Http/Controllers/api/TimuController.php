@@ -114,18 +114,18 @@ class TimuController extends Controller
                 $FileName = date('Y-m-d') . uniqid() . '.' . $FileType; //定义文件名
 
                 Storage::disk('image')->put($FileName, file_get_contents($FilePath)); //存储文件
-                $img = Image::make(public_path($path . '/' . $FileName));
-                /* 在右下角添加水印，偏移量为10px */
-                //$img->insert(public_path($path . '/' . $FileName), 'bottom-22222222222222222right', 100, 100);
-                // 插入客户经理名称
-                $fontPath = public_path('font/msyh.ttc');
-                $img->text('李白', 100, 100, function ($font) use ($fontPath) {  //左边距，上边距
-                    $font->file($fontPath);
-                    $font->size(24);
-                    $font->valign('left');
-                });
+                // $img = Image::make(public_path($path . '/' . $FileName));
+                // /* 在右下角添加水印，偏移量为10px */
+                // //$img->insert(public_path($path . '/' . $FileName), 'bottom-22222222222222222right', 100, 100);
+                // // 插入客户经理名称
+                // $fontPath = public_path('font/msyh.ttc');
+                // $img->text('李白', 100, 100, function ($font) use ($fontPath) {  //左边距，上边距
+                //     $font->file($fontPath);
+                //     $font->size(24);
+                //     $font->valign('left');
+                // });
 
-                $img->save(public_path($path . '/' . $FileName));
+                // $img->save(public_path($path . '/' . $FileName));
 
                 /* 上面的逻辑可以通过链式表达式搞定 */
                 // $img = Image::make('./image/abc.jpg')
