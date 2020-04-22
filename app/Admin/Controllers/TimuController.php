@@ -27,7 +27,9 @@ class TimuController extends AdminController
         $grid = new Grid(new timu());
 
         $grid->column('id', __('Id'));
-        $grid->column('1_1', __('地市'));
+        $grid->column('1_11', __('省'));
+        $grid->column('1_12', __('市'));
+        $grid->column('1_13', __('区'));
         $grid->column('1_2', __('机构简称'));
         $grid->column('1_3', __('网点'));
         $grid->column('2', __('暗访人员'));
