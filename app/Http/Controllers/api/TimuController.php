@@ -13,6 +13,11 @@ use Illuminate\Support\Str;
 
 class TimuController extends Controller
 {
+    public function password(Request $request)
+    {
+        $data =['8888','123456'];
+        return $data;
+    }
     //
     /**
      * 一个表单提交，其中有图片上传的云存储例子.

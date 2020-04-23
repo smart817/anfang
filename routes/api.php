@@ -14,4 +14,5 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\api','middleware' => [
     $api->get('content', 'AnfangContengController@index');
     $api->post('store', 'TimuController@store');
     $api->post('tijiao', 'TimuController@tijiao');
+    $api->post('password', 'TimuController@password');
 });

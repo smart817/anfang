@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\anfangContent;
+use App\Models\AnfangContent;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -15,7 +15,7 @@ class AnfangContentController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Models\anfangContent';
+    protected $title = 'App\Models\AnfangContent';
 
     /**
      * Make a grid builder.
@@ -24,7 +24,7 @@ class AnfangContentController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new anfangContent());
+        $grid = new Grid(new AnfangContent());
 
         $grid->column('id', __('Id'));
         $grid->column('keyname', __('Keyname'));
@@ -44,7 +44,7 @@ class AnfangContentController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(anfangContent::findOrFail($id));
+        $show = new Show(AnfangContent::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('keyname', __('Keyname'));
@@ -62,7 +62,7 @@ class AnfangContentController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new anfangContent());
+        $form = new Form(new AnfangContent());
 
         $form->text('keyname', __('Keyname'));
         $form->text('value', __('Value'));
