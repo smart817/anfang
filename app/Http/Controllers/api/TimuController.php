@@ -47,12 +47,14 @@ class TimuController extends Controller
 
         $timu = new Timu;
         foreach ($data as $key => $value) {
-            $timu[$key] = $value;
+            if ($key !='s') {
+                $timu[$key] = $value;
+            }
         }
 
-        // $timu->save();
-        return $timu;//"保存成功";
-        //$data = $request->all();
+        $timu->save();
+        $ress=['code'=>200,'message'=>'保存成功','data'=>$timu];
+        return $this->response->array($ress);
     }
     public function storeQiniu(Request $request)
     {
@@ -112,8 +114,9 @@ class TimuController extends Controller
         $image = str_replace(' ', '+', $image);
         $imageName = 'image_' . time() . '.' . $image_extension[1]; //generating unique file name;
         Storage::disk('image')->put($imageName, base64_decode($image));
-
-        return  "http://".$_SERVER["HTTP_HOST"].'/image/'.$imageName;
+        $data="http://".$_SERVER["HTTP_HOST"].'/image/'.$imageName;
+        $ress=['code'=>200,'message'=>'保存成功','data'=>$data];
+        return $this->response->array($ress);
     }
     public function store22(Request $request)
     {

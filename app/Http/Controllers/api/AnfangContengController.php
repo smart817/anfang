@@ -16,6 +16,5 @@ class AnfangContengController extends Controller
         //$keyword="暗访人员";
         $anfangContent = AnfangContent::where('keyname', 'like', '%'.$keyword.'%')->get();
         return $this->response->collection($anfangContent, $transformer);
-        //return $this->response->array($anfangContent, $transformer);
     }
 }

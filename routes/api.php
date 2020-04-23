@@ -7,7 +7,7 @@ $api = app('Dingo\Api\Routing\Router');
 //         return 'sdfsdfsdfdddd';
 //     });
 // });
-$api->version('v1', ['namespace' => 'App\Http\Controllers\api','middleware' => ['cors']], function ($api) {
+$api->version('v1', ['namespace' => 'App\Http\Controllers\api','middleware'=>'cors'], function ($api) {
     $api->get('aaa', function () {
         return 'sdfsdfsdfdddd';
     });
